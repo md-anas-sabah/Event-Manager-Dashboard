@@ -64,7 +64,7 @@ export default function Navbar() {
 
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="outline" className="ml-4">
+                  <Button variant="outline" className="ml-4 cursor-pointer">
                     {user?.name || "Account"}
                   </Button>
                 </DropdownMenuTrigger>
@@ -86,10 +86,12 @@ export default function Navbar() {
           ) : (
             <>
               <Link href="/login">
-                <Button variant="ghost">Login</Button>
+                <Button variant="ghost" className="cursor-pointer">
+                  Login
+                </Button>
               </Link>
               <Link href="/register">
-                <Button>Register</Button>
+                <Button className="cursor-pointer">Register</Button>
               </Link>
             </>
           )}
