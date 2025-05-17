@@ -57,10 +57,16 @@ export default function HomePage() {
               {isAuthenticated ? (
                 <>
                   <Link href="/dashboard">
-                    <Button size="lg">Go to Dashboard</Button>
+                    <Button size="lg" className="cursor-pointer">
+                      Go to Dashboard
+                    </Button>
                   </Link>
                   <Link href="/events/create">
-                    <Button size="lg" variant="outline">
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="cursor-pointer"
+                    >
                       Create Event
                     </Button>
                   </Link>
@@ -68,9 +74,11 @@ export default function HomePage() {
               ) : (
                 <>
                   <Link href="/register">
-                    <Button size="lg">Get Started</Button>
+                    <Button size="lg" className="cursor-pointer">
+                      Get Started
+                    </Button>
                   </Link>
-                  <Link href="/login">
+                  <Link href="/login" className="cursor-pointer">
                     <Button size="lg" variant="outline">
                       Login
                     </Button>
@@ -102,7 +110,9 @@ export default function HomePage() {
               </p>
               {isAuthenticated && (
                 <Link href="/events/create">
-                  <Button>Create Your Own Event</Button>
+                  <Button className="cursor-pointer">
+                    Create Your Own Event
+                  </Button>
                 </Link>
               )}
             </div>
@@ -116,7 +126,7 @@ export default function HomePage() {
 
           <div className="mt-12 text-center">
             <Link href="/events">
-              <Button variant="outline" size="lg">
+              <Button variant="outline" size="lg" className="cursor-pointer">
                 View All Events
               </Button>
             </Link>
@@ -170,11 +180,15 @@ export default function HomePage() {
           </p>
           {isAuthenticated ? (
             <Link href="/events/create">
-              <Button size="lg">Create Your First Event</Button>
+              <Button size="lg" className="cursor-pointer">
+                Create Your First Event
+              </Button>
             </Link>
           ) : (
-            <Link href="/register">
-              <Button size="lg">Sign Up Now</Button>
+            <Link href="/register" className="cursor-pointer">
+              <Button size="lg" className="cursor-pointer">
+                Sign Up Now
+              </Button>
             </Link>
           )}
         </div>
@@ -199,7 +213,7 @@ export default function HomePage() {
               {isAuthenticated ? (
                 <Link
                   href="/dashboard"
-                  className="text-sm text-muted-foreground hover:text-foreground"
+                  className="text-sm text-muted-foreground hover:text-foreground cursor-pointer"
                 >
                   Dashboard
                 </Link>
@@ -207,13 +221,13 @@ export default function HomePage() {
                 <>
                   <Link
                     href="/login"
-                    className="text-sm text-muted-foreground hover:text-foreground"
+                    className="text-sm text-muted-foreground hover:text-foreground cursor-pointer"
                   >
                     Login
                   </Link>
                   <Link
                     href="/register"
-                    className="text-sm text-muted-foreground hover:text-foreground"
+                    className="text-sm text-muted-foreground hover:text-foreground cursor-pointer"
                   >
                     Register
                   </Link>

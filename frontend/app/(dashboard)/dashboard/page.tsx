@@ -27,10 +27,7 @@ export default function DashboardPage() {
     const fetchDashboardData = async () => {
       setIsLoading(true);
       try {
-        // Fetch user's events
         const userEvents = await getUserEvents();
-
-        // Filter for upcoming events
         const upcoming = userEvents
           .filter((event) => new Date(event.date) >= new Date())
           .sort(
@@ -38,8 +35,6 @@ export default function DashboardPage() {
           );
 
         setUpcomingEvents(upcoming.slice(0, 3));
-
-        // Fetch events user is participating in
         const participating = await getUserParticipatingEvents();
         setParticipatingEvents(participating.slice(0, 3));
       } catch (error) {
@@ -93,7 +88,7 @@ export default function DashboardPage() {
 
               {upcomingEvents.length > 0 && (
                 <Link href="/my-events">
-                  <Button variant="outline" className="w-full">
+                  <Button variant="outline" className="w-full cursor-pointer">
                     View All
                   </Button>
                 </Link>
@@ -135,7 +130,7 @@ export default function DashboardPage() {
 
               {participatingEvents.length > 0 && (
                 <Link href="/participating">
-                  <Button variant="outline" className="w-full">
+                  <Button variant="outline" className="w-full cursor-pointer">
                     View All
                   </Button>
                 </Link>
@@ -150,24 +145,36 @@ export default function DashboardPage() {
             <CardDescription>Manage your events</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="space-y-2">
+            <div className="space-y-2 flex flex-col gap-2">
               <Link href="/events/create">
-                <Button variant="outline" className="w-full justify-start">
+                <Button
+                  variant="outline"
+                  className="w-full justify-start cursor-pointer"
+                >
                   Create New Event
                 </Button>
               </Link>
               <Link href="/events">
-                <Button variant="outline" className="w-full justify-start">
+                <Button
+                  variant="outline"
+                  className="w-full justify-start cursor-pointer"
+                >
                   Browse All Events
                 </Button>
               </Link>
               <Link href="/my-events">
-                <Button variant="outline" className="w-full justify-start">
+                <Button
+                  variant="outline"
+                  className="w-full justify-start cursor-pointer"
+                >
                   Manage My Events
                 </Button>
               </Link>
               <Link href="/profile">
-                <Button variant="outline" className="w-full justify-start">
+                <Button
+                  variant="outline"
+                  className="w-full justify-start cursor-pointer"
+                >
                   View Profile
                 </Button>
               </Link>

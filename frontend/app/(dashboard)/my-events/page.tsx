@@ -70,7 +70,7 @@ export default function MyEventsPage() {
       <div className="flex justify-between items-center">
         <h1 className="text-3xl font-bold">My Events</h1>
         <Link href="/events/create">
-          <Button>Create Event</Button>
+          <Button className="cursor-pointer">Create Event</Button>
         </Link>
       </div>
 
@@ -85,7 +85,7 @@ export default function MyEventsPage() {
             You haven&apos;t created any events yet
           </p>
           <Link href="/events/create">
-            <Button>Create Your First Event</Button>
+            <Button className="cursor-pointer">Create Your First Event</Button>
           </Link>
         </div>
       ) : (

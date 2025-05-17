@@ -1,15 +1,11 @@
 import crypto from "crypto";
 
-// Define token payload interface
 export interface TokenPayload {
   id: number;
   email: string;
   exp?: number;
 }
 
-/**
- * Simple token utility without using JWT
- */
 export const tokenUtils = {
   /**
    * Generate a token using a simple encoding method
@@ -44,26 +40,21 @@ export const tokenUtils = {
    */
   verifyToken(token: string): TokenPayload | null {
     try {
-      // Decode from base64
       const tokenData = Buffer.from(token, "base64").toString();
       const { data, hash } = JSON.parse(tokenData);
 
-      // Verify hash
       const secret = process.env.APP_SECRET || "default-secret-key";
       const computedHash = crypto
         .createHmac("sha256", secret)
         .update(data)
         .digest("hex");
 
-      // Check if hash is valid
       if (hash !== computedHash) {
         return null;
       }
 
-      // Parse payload
       const payload = JSON.parse(data) as TokenPayload;
 
-      // Check if token is expired
       if (payload.exp && payload.exp < Date.now()) {
         return null;
       }

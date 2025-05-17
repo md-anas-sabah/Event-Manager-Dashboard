@@ -29,7 +29,6 @@ export default function EventCard({
 }: EventCardProps) {
   const { isAuthenticated } = useAuth();
 
-  // Format date for display
   const formattedDate = format(new Date(event.date), "MMMM d, yyyy");
 
   return (
@@ -46,7 +45,9 @@ export default function EventCard({
       </CardContent>
       <CardFooter className="flex justify-between">
         <Link href={`/events/${event.id}`}>
-          <Button variant="outline">View Details</Button>
+          <Button variant="outline" className="cursor-pointer">
+            View Details
+          </Button>
         </Link>
 
         {showActions && isAuthenticated && (
@@ -54,10 +55,13 @@ export default function EventCard({
             {isOwner && (
               <>
                 <Link href={`/events/${event.id}/edit`}>
-                  <Button variant="outline">Edit</Button>
+                  <Button variant="outline" className="cursor-pointer">
+                    Edit
+                  </Button>
                 </Link>
                 {onDelete && (
                   <Button
+                    className="cursor-pointer"
                     variant="destructive"
                     onClick={() => onDelete(event.id)}
                   >
@@ -68,7 +72,7 @@ export default function EventCard({
             )}
             {!isOwner && (
               <Link href={`/events/${event.id}`}>
-                <Button>Register</Button>
+                <Button className="cursor-pointer">Register</Button>
               </Link>
             )}
           </div>

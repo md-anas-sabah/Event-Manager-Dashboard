@@ -49,7 +49,6 @@ export default function EventDetailsPage() {
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
 
-  // Fetch event details and check if user is owner
   useEffect(() => {
     const fetchEventDetails = async () => {
       setIsLoading(true);
@@ -85,7 +84,6 @@ export default function EventDetailsPage() {
     }
   }, [id, user]);
 
-  // Fetch participants for the event
   const fetchParticipants = async () => {
     if (!id) return;
 
@@ -95,7 +93,6 @@ export default function EventDetailsPage() {
       const participantsData = await getEventParticipants(eventId);
       setParticipants(participantsData);
 
-      // Check if current user is registered
       if (user) {
         const userRegistration = participantsData.find(
           (p) => p.user_id === user.id && p.status === "registered"
@@ -112,7 +109,6 @@ export default function EventDetailsPage() {
     }
   };
 
-  // Handle event registration
   const handleRegister = async () => {
     if (!event || !isAuthenticated) return;
 
@@ -132,7 +128,6 @@ export default function EventDetailsPage() {
     }
   };
 
-  // Handle cancelling participant registration (as event owner)
   const handleCancelRegistration = async (
     eventId: number,
     userId: number,
@@ -141,14 +136,12 @@ export default function EventDetailsPage() {
     try {
       await cancelParticipantRegistration(eventId, userId, data);
       fetchParticipants();
-      // Removed the return true statement to make it compatible with Promise<void>
     } catch (error) {
       console.error("Error cancelling registration:", error);
       throw error;
     }
   };
 
-  // Handle event deletion
   const handleDelete = async () => {
     if (!event) return;
 
@@ -235,7 +228,7 @@ export default function EventDetailsPage() {
             <Button
               onClick={handleRegister}
               disabled={isRegistered || isRegistering}
-              className="w-full"
+              className="w-full cursor-pointer"
             >
               {isRegistering ? (
                 <>
@@ -256,7 +249,9 @@ export default function EventDetailsPage() {
                 You need to log in to register for this event
               </p>
               <Link href="/login">
-                <Button className="w-full">Log In to Register</Button>
+                <Button className="w-full cursor-pointer">
+                  Log In to Register
+                </Button>
               </Link>
             </div>
           )}
