@@ -28,17 +28,17 @@ The application follows a client-server architecture with a clear separation bet
 ## 3. Database Schema
 
 ```
-┌───────────────────┐      ┌───────────────────┐      ┌───────────────────┐
+┌───────────────────┐      ┌───────────────────┐      ┌───────────────────-┐
 │      users        │      │      events       │      │ event_participants │
-├───────────────────┤      ├───────────────────┤      ├───────────────────┤
-│ id (PK)           │      │ id (PK)           │      │ id (PK)           │
+├───────────────────┤      ├───────────────────┤      ├───────────────────-┤
+│ id (PK)           │      │ id (PK)           │      │ id (PK)            │
 │ name              │      │ name              │      │ event_id (FK)      │
 │ email             │      │ description       │      │ user_id (FK)       │
 │ password          │      │ date              │      │ status             │
 │ created_at        │      │ location          │      │ registered_at      │
 └───────────────────┘      │ user_id (FK)      │      │ cancelled_at       │
                            │ created_at        │      │ cancellation_reason│
-                           └───────────────────┘      └───────────────────┘
+                           └───────────────────┘      └───────────────────-┘
 ```
 
 ## 4. API Endpoints
