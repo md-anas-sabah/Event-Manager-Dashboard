@@ -72,9 +72,20 @@ const app = express();
 const PORT = process.env.PORT || 9000;
 const FRONTEND_URL = "https://event-manager-dashboard-two.vercel.app";
 
+const allowedOrigins = [
+  "https://event-manager-dashboard-two.vercel.app",
+  "http://localhost:3000",
+];
+
 app.use(
   cors({
-    origin: FRONTEND_URL,
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"],
     allowedHeaders: [
@@ -102,7 +113,6 @@ app.post("/api/test-cors", (req: Request, res: Response) => {
     received: req.body,
   });
 });
-
 
 app.use("/api/events", eventRoutes);
 app.use("/api", participantRoutes);
