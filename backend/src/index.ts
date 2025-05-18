@@ -70,10 +70,10 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 9000;
-const FRONTEND_URL = "https://event-manager-dashboard-two.vercel.app";
+const FRONTEND_URL = "https://event-manager-dashboard-phi.vercel.app/";
 
 const allowedOrigins = [
-  "https://event-manager-dashboard-two.vercel.app",
+  "https://event-manager-dashboard-phi.vercel.app/",
   "http://localhost:3000",
 ];
 
